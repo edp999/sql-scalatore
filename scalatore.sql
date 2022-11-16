@@ -96,3 +96,23 @@ scalate	effettuate	all’anno	in	N da	scalatori	nati	in
 nazioni	diverse	da	N.
 */
 
+select  sa.nazione, (count(se.cf))
+from scalatore se join scalata sa on se.cf = sa.scalatore
+where se.nazioneNascita<>sa.nazione
+group by sa.nazione
+
+/*
+9:
+Calcolare	gli	scalatori	tali	che	tutte	le	scalate	che	
+hanno	effettuato	nella	nazione	di	nascita	le	hanno	
+effettuate	quando	erano	minorenni.
+*/
+select se.cf
+from scalatore se join scalata sa on se.cf=sa.scalatore
+where se.cf not in (select se.cf
+from scalatore se join scalata sa on se.cf=sa.scalatore
+where (sa.anno-se.annoNascita)>18 and (sa.nazione!=se.nazioneNascita))
+
+/*
+ANCORA SBAGLIATO POI SISTEMO ^^^
+*/
