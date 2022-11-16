@@ -66,3 +66,33 @@ affiancare	queste	informazioni	alle	nazioni	in	cui	ha	effettuato
 scalate.
 */
 
+select distinct se.cf, se.nazioneNascita, n.continente, sa.nazione
+from scalatore se join nazione n on se.nazioneNascita=n.nome
+    join scalata sa on se.cf=sa.scalatore
+where n.continente<>'America'
+order by se.cf
+
+/*
+7:
+Per	ogni	nazione	e	per	ogni	anno,	calcolare	il	numero	di		
+scalate	effettuate	in	quella	nazione	e	in	quell’anno,	ma	solo	se	
+tale	numero	è	maggiore	di	1.	Nel	risultato	le	nazioni	dello	
+stesso	continente	devono	essere	mostrati	in	tuple contigue,	e	
+le	tuple relative	allo	stesso	continente	devono	essere	ordinate	
+per	anno.
+*/
+
+select n.nazione, n.anno, n.conto
+from (select sa.nazione, sa.anno, count(sa.scalatore) as conto
+        from scalata sa join nazione na on sa.nazione=na.nome
+        group by sa.nazione, sa.anno) n join nazione naz on naz.nome=n.nazione
+where n.conto>1
+order by naz.continente, n.anno
+
+/*
+8:
+Per	ogni	nazione	N,	calcolare	il	numero	medio	di	
+scalate	effettuate	all’anno	in	N da	scalatori	nati	in	
+nazioni	diverse	da	N.
+*/
+
