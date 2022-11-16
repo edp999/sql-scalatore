@@ -32,6 +32,7 @@ INSERT INTO Scalatore (CF,annoNascita,nazioneNascita) VALUES ('500',1980,'Svezia
 INSERT INTO Scalatore (CF,annoNascita,nazioneNascita) VALUES ('600',1988,'Argentina');
 INSERT INTO Scalatore (CF,annoNascita,nazioneNascita) VALUES ('700',1969,'Russia');
 INSERT INTO Scalatore (CF,annoNascita,nazioneNascita) VALUES ('800',1965,'Giappone');
+INSERT INTO SCALATORE (CF,annoNascita,nazioneNascita) VALUES ('900',2000,'Italia');
 
 INSERT INTO Nazione (nome,continente) VALUES ('Italia','Europa');
 INSERT INTO Nazione (nome,continente) VALUES ('UK','Europa');
@@ -65,3 +66,7 @@ INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('600','Cuba', 2007);
 INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('600','India', 2013);
 INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('700','Cile', 2005);
 INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('700','Austria', 2009);
+INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('900','Italia', 2009);
+INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('900','Italia', 2015);
+INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('900','Francia', 2009);
+INSERT INTO Scalata (scalatore,nazione,anno) VALUES ('900','Austria', 2030);
