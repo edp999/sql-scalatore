@@ -52,10 +52,21 @@ Per	ogni	continente,	calcolare	il	numero	di	scalate	effettuate
 da	scalatori	nati	in	una	nazione	di	quel	continente.
 */
 
-SELECT n.continente, count(se.cf)
-FROM scalatore se JOIN nazione n on se.nazioneNascita=n.nome
-    JOIN scalata sa on se.cf=sa.scalatore
-group by n.continente
+SELECT na.continente, count(n.nazioneNascita)
+FROM nazione na left JOIN (scalata sa join scalatore se on se.cf = sa.scalatore ) as n on na.nome = n.nazioneNascita
+group by na.continente
+order by count(n.nazioneNascita) desc
+
+/*union
+(select distinct count(se.cf), n.continente
+from nazione n left join scalatore se on n.nome = se.nazioneNascita
+group by se.cf, n.continente) as n 
+
+    left JOIN scalata sa on se.nazioneNascita = sa.nazione)
+
+select * from scalata sa join scalatore se on se.cf = sa.scalatore
+select * from nazione
+*/
 
 /*
 6:
@@ -122,6 +133,3 @@ and
       se.cf in (SELECT se.cf 
                 FROM scalatore se JOIN scalata sa on se.cf=sa.scalatore
                 WHERE se.nazioneNascita=sa.nazione)
-/*
-ANCORA SBAGLIATO POI SISTEMO ^^^
-*/
